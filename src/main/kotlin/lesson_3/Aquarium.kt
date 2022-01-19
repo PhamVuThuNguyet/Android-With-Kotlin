@@ -1,6 +1,8 @@
 package lesson_3
 
-class Aquarium(var width: Int = 100, var height: Int = 40, var length: Int = 20) {
+import kotlin.math.roundToInt
+
+open class Aquarium(open var width: Int = 100, open var height: Int = 40, open var length: Int = 20) {
     // class should have many init blocks
     // They are executed in the order in which they appear in the class definition
     // and all of them are executed when the constructor is called.
@@ -20,13 +22,19 @@ class Aquarium(var width: Int = 100, var height: Int = 40, var length: Int = 20)
 
     // If you want a property that your code can read or write, but outside code can only read
     // you can leave the property and its getter as public and declare the setter private.
-    var volume: Int
+    open var volume: Int
         get() = width * height * length / 1000
         set(value) {
             height = (value * 1000) / (width * length)
         }
 
+    open val shape = "rectangle"
+    open var water: Double = volume * 0.9
+
     fun printSize() {
-        println("Width: $width cm\nHeight: $height cm\nLength: $length cm\nVolume: $volume")
+        println(
+            "Width: $width cm\nHeight: $height cm\nLength: $length cm\nVolume: $volume\n" +
+                    "Water: $water liters (${water / volume * 100.0}% full)"
+        )
     }
 }

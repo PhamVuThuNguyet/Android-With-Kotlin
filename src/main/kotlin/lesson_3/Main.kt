@@ -25,8 +25,23 @@ fun buildAquarium() {
     println("\nChange volume:")
     myAquarium.volume = 70
     myAquarium.printSize()
+
+    // create tower tank
+    println("\n")
+    val myTowerTank = TowerTank()
+    myTowerTank.length = 100
+    myTowerTank.printSize()
+}
+
+fun makeFish() {
+    val shark = Shark("grey")
+    val plecos = Plecostomus()
+    println("Shark: ${shark.color}")
+    println("Plecostomus: ${plecos.color}")
+    shark.eat()
 }
 
 fun main() {
-    buildAquarium()
+//    buildAquarium()
+    makeFish()
 }
